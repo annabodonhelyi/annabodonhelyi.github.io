@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anna Bodonhelyi | Machine Learning & AI Engineer</title>
+  
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              bg: '#0a0e17',        /* Deep Midnight Blue */
+              card: '#0f172a',      /* Slate Dark Blue */
+              border: '#1e293b',    /* Subtle border */
+              accent: '#38bdf8',    /* Sky Blue Accent */
+              accentGlow: '#0284c7',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#0a0e17] text-slate-200 font-sans antialiased selection:bg-sky-500/20 selection:text-sky-300">
+
+  <!-- Ambient Glow Effect -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[650px] h-[350px] bg-sky-500/10 blur-[130px] rounded-full"></div>
+  </div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-6 py-16 md:py-24 space-y-24">
+
+    <!-- HERO SECTION -->
+    <header class="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-10">
+      <div class="space-y-5 text-center md:text-left">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium border border-sky-400/30 bg-sky-950/40 text-sky-300">
+          <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+          Available for Full-Time Roles
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white">
+          Anna Bodonhelyi
+        </h1>
+        
+        <p class="text-lg md:text-xl text-slate-300 font-normal">
+          AI & Machine Learning Researcher / Engineer
+        </p>
+        
+        <p class="text-slate-400 text-sm md:text-base leading-relaxed max-w-xl">
+          Dual M.Sc. in Mechatronics & Robotics from TUM & BME, specializing in Machine Learning, Computer Vision, and Human-AI Interaction. Passionate about bringing rigorous ML systems into real-world production.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap gap-3 pt-2 justify-center md:justify-start">
+          <a href="resume.pdf" target="_blank" class="px-5 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-sm transition duration-200">
+            View Resume (PDF)
+          </a>
+          <a href="https://github.com/annabodonhelyi" target="_blank" class="px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-900/60 hover:border-slate-500 hover:text-white text-slate-300 text-sm transition duration-200">
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/annabodonhelyi" target="_blank" class="px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-900/60 hover:border-slate-500 hover:text-white text-slate-300 text-sm transition duration-200">
+            LinkedIn
+          </a>
+          <a href="mailto:your.email@example.com" class="px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-900/60 hover:border-slate-500 hover:text-white text-slate-300 text-sm transition duration-200">
+            Contact
+          </a>
+        </div>
+      </div>
+
+      <!-- Photo -->
+      <div class="relative group shrink-0">
+        <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 opacity-25 blur transition group-hover:opacity-40"></div>
+        <img 
+          src="profile.jpg" 
+          alt="Anna Bodonhelyi" 
+          class="relative w-36 h-36 md:w-44 md:h-44 object-cover rounded-2xl border border-slate-700/60 shadow-xl bg-slate-800"
+          onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80'"
+        />
+      </div>
+    </header>
+
+    <!-- TECHNICAL SKILLS -->
+    <section class="space-y-6">
+      <h2 class="text-xs uppercase font-bold tracking-widest text-sky-400">Technical Expertise</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        
+        <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2.5">
+          <h3 class="text-white text-sm font-semibold">Machine Learning & AI</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            PyTorch, TensorFlow, Scikit-Learn, Computer Vision, Federated Learning, Transformers, LLM fine-tuning & evaluation.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2.5">
+          <h3 class="text-white text-sm font-semibold">Backend & Data</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Python, C++, SQL, FastAPI, Docker, Linux/Bash, Pandas, NumPy, Git workflow, REST APIs.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2.5">
+          <h3 class="text-white text-sm font-semibold">Robotics & HCI</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Robot Operating System (ROS), Control Systems, Sensor Data Fusion, User Intent Modeling, Multimodal Systems.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS & RESEARCH -->
+    <section class="space-y-8">
+      <div class="flex justify-between items-baseline border-b border-slate-800/80 pb-3">
+        <h2 class="text-xs uppercase font-bold tracking-widest text-sky-400">Featured Projects & Research</h2>
+        <a href="https://github.com/annabodonhelyi" target="_blank" class="text-xs text-slate-400 hover:text-sky-400 transition">View all on GitHub &rarr;</a>
+      </div>
+
+      <div class="space-y-6">
+        
+        <!-- Project 1 -->
+        <article class="p-6 rounded-xl border border-slate-800 bg-slate-900/30 hover:border-slate-700 transition duration-200 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <h3 class="text-lg font-semibold text-white">TurboSVM-FL: Boosting Federated Learning</h3>
+            <div class="flex gap-3 text-xs">
+              <a href="#" class="text-sky-400 hover:underline">Read Paper</a>
+              <span class="text-slate-600">•</span>
+              <a href="#" class="text-slate-400 hover:text-white hover:underline">Code Repository</a>
+            </div>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Co-developed an SVM aggregation method addressing lazy client bottlenecks in decentralized federated learning scenarios, significantly reducing training iterations while retaining model stability across non-IID data distributions.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Python</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">PyTorch</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Federated Learning</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">AAAI</span>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="p-6 rounded-xl border border-slate-800 bg-slate-900/30 hover:border-slate-700 transition duration-200 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <h3 class="text-lg font-semibold text-white">Deep Learning for Left Ventricular Hypertrophy Classification</h3>
+            <div class="flex gap-3 text-xs">
+              <a href="#" class="text-slate-400 hover:text-white hover:underline">Source</a>
+            </div>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Engineered computer vision pipelines for automated classification and segmentation of cardiac imaging datasets. Implemented data augmentation routines, hyperparameter tuning, and interpretability heatmaps (Grad-CAM).
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Computer Vision</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">PyTorch</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Medical Imaging</span>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="p-6 rounded-xl border border-slate-800 bg-slate-900/30 hover:border-slate-700 transition duration-200 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <h3 class="text-lg font-semibold text-white">AI Video Assistant for Active Learning (CHI)</h3>
+            <div class="flex gap-3 text-xs">
+              <a href="#" class="text-sky-400 hover:underline">Publication</a>
+              <span class="text-slate-600">•</span>
+              <a href="#" class="text-slate-400 hover:text-white hover:underline">Demo</a>
+            </div>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Designed and evaluated an intelligent multimodal system leveraging Large Language Models to transform passive lecture video consumption into interactive query-and-response learning sessions.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">LLMs</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">HCI</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Full-Stack Prototype</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="pt-10 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+      <p>&copy; 2026 Anna Bodonhelyi. Built with HTML & Tailwind CSS.</p>
+      <div class="flex gap-5">
+        <a href="https://github.com/annabodonhelyi" class="hover:text-slate-400 transition">GitHub</a>
+        <a href="https://www.linkedin.com/in/annabodonhelyi" class="hover:text-slate-400 transition">LinkedIn</a>
+        <a href="mailto:your.email@example.com" class="hover:text-slate-400 transition">Email</a>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
