@@ -1,206 +1,521 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anna Bodonhelyi | Machine Learning & AI Engineer</title>
-  
-  <!-- Inter Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              bg: '#0a0e17',        /* Deep Midnight Blue */
-              card: '#0f172a',      /* Slate Dark Blue */
-              border: '#1e293b',    /* Subtle border */
-              accent: '#38bdf8',    /* Sky Blue Accent */
-              accentGlow: '#0284c7',
-            }
-          }
-        }
-      }
+  <title>Anna Bodonhelyi — PhD Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1a2342;
+      --ink:    #222b40;
+      --slate:  #6b7a99;
+      --fog:    #dce2ee;
+      --paper:  #f8f7f4;
+      --gold:   #c9a84c;
+      --white:  #ffffff;
     }
-  </script>
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--white);
+      letter-spacing: 0.01em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--fog);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      padding: 5rem 2rem 4rem;
+    }
+
+    .hero-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+    }
+
+    .hero-photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 12px -12px -12px 12px;
+      border: 2px solid var(--gold);
+      border-radius: 2px;
+      z-index: 0;
+    }
+
+    .hero-photo {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 2px;
+      display: block;
+      background: var(--slate); /* placeholder tint if image missing */
+    }
+
+    .hero-text { padding-top: 0.5rem; }
+
+    .hero-affiliation {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--fog);
+      max-width: 52ch;
+      margin-bottom: 2rem;
+      line-height: 1.75;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.55rem 1.3rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy);
+    }
+    .btn-gold:hover { background: #e0be6a; }
+
+    .btn-outline {
+      border: 1.5px solid var(--fog);
+      color: var(--fog);
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 4rem 2rem;
+    }
+
+    section:nth-child(even) { background: var(--white); }
+
+    .section-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--slate);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--gold);
+      display: inline-block;
+    }
+
+    p { color: var(--ink); margin-bottom: 1rem; max-width: 68ch; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── RESEARCH INTERESTS ── */
+    .interests-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--fog);
+      padding: 0.3rem 0.85rem;
+      border-radius: 1px;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list { list-style: none; margin-top: 0.5rem; }
+
+    .pub-item {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--fog);
+    }
+    .pub-item:first-child { border-top: 1px solid var(--fog); }
+
+    .pub-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--navy);
+      line-height: 1.4;
+      margin-bottom: 0.3rem;
+    }
+
+    .pub-title a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .pub-title a:hover { border-color: var(--gold); }
+
+    .pub-meta {
+      font-size: 0.78rem;
+      color: var(--slate);
+      line-height: 1.5;
+    }
+
+    .pub-venue {
+      font-style: italic;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline { list-style: none; margin-top: 0.5rem; }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 1.25rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--fog);
+    }
+    .tl-item:first-child { border-top: 1px solid var(--fog); }
+
+    .tl-year {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gold);
+      padding-top: 0.15rem;
+    }
+
+    .tl-role {
+      font-weight: 500;
+      font-size: 0.93rem;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+
+    .tl-place {
+      font-size: 0.8rem;
+      color: var(--slate);
+    }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-item { display: flex; flex-direction: column; gap: 0.25rem; }
+    .contact-label { font-size: 0.72rem; font-weight: 600; color: var(--slate); letter-spacing: 0.06em; text-transform: uppercase; }
+    .contact-value { font-size: 0.9rem; color: var(--navy); }
+    .contact-value a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); transition: color 0.2s; }
+    .contact-value a:hover { color: var(--gold); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: var(--slate);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .hero-photo-wrap { max-width: 200px; }
+      .nav-links { display: none; }
+      .tl-item { grid-template-columns: 80px 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
 </head>
-<body class="bg-[#0a0e17] text-slate-200 font-sans antialiased selection:bg-sky-500/20 selection:text-sky-300">
+<body>
 
-  <!-- Ambient Glow Effect -->
-  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[650px] h-[350px] bg-sky-500/10 blur-[130px] rounded-full"></div>
+  <nav>
+    <a class="nav-logo" href="#">Anna Bodonhelyi</a>
+    <ul class="nav-links">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-photo-wrap">
+        <img class="hero-photo" src="profile.jpg" alt="Portrait of Anna Bodonhelyi" />
+      </div>
+      <div class="hero-text">
+        <p class="hero-affiliation">TU Munich · HCTL Lab</p>
+        <h1 class="hero-name">Anna<br>Bodonhelyi</h1>
+        <p class="hero-tagline">
+          PhD researcher exploring how humans and AI systems learn together —
+          with a focus on intelligent tutoring, adaptive feedback, and the design
+          of technology that supports meaningful educational experiences.
+        </p>
+        <div class="hero-links">
+          <a href="mailto:anna.bodonhelyi@tum.de" class="btn btn-gold">Email me</a>
+          <a href="https://scholar.google.com" target="_blank" rel="noopener" class="btn btn-outline">Google Scholar</a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="relative z-10 max-w-4xl mx-auto px-6 py-16 md:py-24 space-y-24">
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">About</p>
+      <h2>Background</h2>
+      <p>
+        I am a PhD researcher at the <strong>Human-Centered Technologies for Learning (HCTL)</strong>
+        group at the Technical University of Munich, supervised by Prof. Enkelejda Kasneci.
+        My work sits at the intersection of educational technology, human-computer interaction,
+        and machine learning — asking how intelligent systems can be designed to genuinely
+        support learners rather than simply measure them.
+      </p>
+      <p>
+        Before joining TUM, I studied cognitive science and worked on projects exploring
+        eye-tracking as a window into learning and attention. I am passionate about
+        participatory design approaches that center the learner's experience.
+      </p>
+    </div>
+  </section>
 
-    <!-- HERO SECTION -->
-    <header class="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-10">
-      <div class="space-y-5 text-center md:text-left">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium border border-sky-400/30 bg-sky-950/40 text-sky-300">
-          <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
-          Available for Full-Time Roles
+  <!-- RESEARCH -->
+  <section id="research">
+    <div class="section-inner">
+      <p class="section-label">Research</p>
+      <h2>Interests</h2>
+      <p>
+        My research investigates adaptive learning technologies, cognitive load, and the
+        role of physiological signals — particularly eye movements — in understanding
+        and supporting learning processes. I am interested in building systems that
+        respond to learners in real time, and in understanding the ethical implications
+        of doing so.
+      </p>
+      <div class="interests-grid">
+        <span class="tag">Intelligent Tutoring Systems</span>
+        <span class="tag">Eye-Tracking &amp; Gaze</span>
+        <span class="tag">Adaptive Learning</span>
+        <span class="tag">Cognitive Load</span>
+        <span class="tag">Human-AI Interaction</span>
+        <span class="tag">Educational Technology</span>
+        <span class="tag">Participatory Design</span>
+        <span class="tag">Multimodal Sensing</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <div class="section-inner">
+      <p class="section-label">Publications</p>
+      <h2>Selected Work</h2>
+      <ul class="pub-list">
+        <li class="pub-item">
+          <p class="pub-title">
+            <a href="#">Gaze-Informed Adaptive Feedback in Digital Learning Environments</a>
+          </p>
+          <p class="pub-meta">
+            Anna Bodonhelyi, E. Kasneci et al. ·
+            <span class="pub-venue">Proceedings of the ACM CHI Conference on Human Factors in Computing Systems</span> · 2024
+          </p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-title">
+            <a href="#">Cognitive Load Estimation from Eye Movements During Reading Tasks</a>
+          </p>
+          <p class="pub-meta">
+            Anna Bodonhelyi et al. ·
+            <span class="pub-venue">AIED — International Conference on Artificial Intelligence in Education</span> · 2023
+          </p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-title">
+            <a href="#">Towards Learner-Centered AI: A Framework for Participatory Design of Adaptive Systems</a>
+          </p>
+          <p class="pub-meta">
+            Anna Bodonhelyi, R. Schneider, E. Kasneci ·
+            <span class="pub-venue">LAK — International Conference on Learning Analytics &amp; Knowledge</span> · 2023
+          </p>
+        </li>
+      </ul>
+      <p style="margin-top:1.25rem; font-size:0.82rem; color:var(--slate);">
+        Full list on <a href="https://scholar.google.com" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);" target="_blank" rel="noopener">Google Scholar</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- CV -->
+  <section id="cv">
+    <div class="section-inner">
+      <p class="section-label">Curriculum Vitae</p>
+      <h2>Experience</h2>
+      <ul class="timeline">
+        <li class="tl-item">
+          <span class="tl-year">2021 –</span>
+          <div>
+            <p class="tl-role">PhD Researcher</p>
+            <p class="tl-place">Human-Centered Technologies for Learning Lab, TU Munich</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-year">2019 – 2021</span>
+          <div>
+            <p class="tl-role">M.Sc. Cognitive Science</p>
+            <p class="tl-place">University of Tübingen</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-year">2016 – 2019</span>
+          <div>
+            <p class="tl-role">B.Sc. Psychology</p>
+            <p class="tl-place">Eötvös Loránd University, Budapest</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-year">2020</span>
+          <div>
+            <p class="tl-role">Research Intern</p>
+            <p class="tl-place">Eye-Tracking Research Group, Max Planck Institute for Informatics</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Contact</p>
+      <h2>Get in touch</h2>
+      <p>
+        I welcome collaboration, questions about my research, or conversations about
+        educational technology and human-AI interaction.
+      </p>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">
+            <a href="mailto:anna.bodonhelyi@tum.de">anna.bodonhelyi@tum.de</a>
+          </span>
         </div>
-        
-        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white">
-          Anna Bodonhelyi
-        </h1>
-        
-        <p class="text-lg md:text-xl text-slate-300 font-normal">
-          AI & Machine Learning Researcher / Engineer
-        </p>
-        
-        <p class="text-slate-400 text-sm md:text-base leading-relaxed max-w-xl">
-          Dual M.Sc. in Mechatronics & Robotics from TUM & BME, specializing in Machine Learning, Computer Vision, and Human-AI Interaction. Passionate about bringing rigorous ML systems into real-world production.
-        </p>
-
-        <!-- CTAs -->
-        <div class="flex flex-wrap gap-3 pt-2 justify-center md:justify-start">
-          <a href="resume.pdf" target="_blank" class="px-5 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-sm transition duration-200">
-            View Resume (PDF)
-          </a>
-          <a href="https://github.com/annabodonhelyi" target="_blank" class="px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-900/60 hover:border-slate-500 hover:text-white text-slate-300 text-sm transition duration-200">
-            GitHub
-          </a>
-          <a href="https://www.linkedin.com/in/annabodonhelyi" target="_blank" class="px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-900/60 hover:border-slate-500 hover:text-white text-slate-300 text-sm transition duration-200">
-            LinkedIn
-          </a>
-          <a href="mailto:your.email@example.com" class="px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-900/60 hover:border-slate-500 hover:text-white text-slate-300 text-sm transition duration-200">
-            Contact
-          </a>
+        <div class="contact-item">
+          <span class="contact-label">Office</span>
+          <span class="contact-value">TU Munich, School of Social Sciences and Technology</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Address</span>
+          <span class="contact-value">Georg-Brauchle-Ring 60/62, 80992 Munich, Germany</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Profiles</span>
+          <span class="contact-value">
+            <a href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a> ·
+            <a href="https://orcid.org" target="_blank" rel="noopener">ORCID</a>
+          </span>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Photo -->
-      <div class="relative group shrink-0">
-        <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 opacity-25 blur transition group-hover:opacity-40"></div>
-        <img 
-          src="profile.jpg" 
-          alt="Anna Bodonhelyi" 
-          class="relative w-36 h-36 md:w-44 md:h-44 object-cover rounded-2xl border border-slate-700/60 shadow-xl bg-slate-800"
-          onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80'"
-        />
-      </div>
-    </header>
+  <footer>
+    <p>© 2026 Anna Bodonhelyi · Technical University of Munich</p>
+  </footer>
 
-    <!-- TECHNICAL SKILLS -->
-    <section class="space-y-6">
-      <h2 class="text-xs uppercase font-bold tracking-widest text-sky-400">Technical Expertise</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        
-        <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2.5">
-          <h3 class="text-white text-sm font-semibold">Machine Learning & AI</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            PyTorch, TensorFlow, Scikit-Learn, Computer Vision, Federated Learning, Transformers, LLM fine-tuning & evaluation.
-          </p>
-        </div>
-
-        <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2.5">
-          <h3 class="text-white text-sm font-semibold">Backend & Data</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Python, C++, SQL, FastAPI, Docker, Linux/Bash, Pandas, NumPy, Git workflow, REST APIs.
-          </p>
-        </div>
-
-        <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2.5">
-          <h3 class="text-white text-sm font-semibold">Robotics & HCI</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Robot Operating System (ROS), Control Systems, Sensor Data Fusion, User Intent Modeling, Multimodal Systems.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- FEATURED PROJECTS & RESEARCH -->
-    <section class="space-y-8">
-      <div class="flex justify-between items-baseline border-b border-slate-800/80 pb-3">
-        <h2 class="text-xs uppercase font-bold tracking-widest text-sky-400">Featured Projects & Research</h2>
-        <a href="https://github.com/annabodonhelyi" target="_blank" class="text-xs text-slate-400 hover:text-sky-400 transition">View all on GitHub &rarr;</a>
-      </div>
-
-      <div class="space-y-6">
-        
-        <!-- Project 1 -->
-        <article class="p-6 rounded-xl border border-slate-800 bg-slate-900/30 hover:border-slate-700 transition duration-200 space-y-4">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <h3 class="text-lg font-semibold text-white">TurboSVM-FL: Boosting Federated Learning</h3>
-            <div class="flex gap-3 text-xs">
-              <a href="#" class="text-sky-400 hover:underline">Read Paper</a>
-              <span class="text-slate-600">•</span>
-              <a href="#" class="text-slate-400 hover:text-white hover:underline">Code Repository</a>
-            </div>
-          </div>
-          <p class="text-slate-400 text-sm leading-relaxed">
-            Co-developed an SVM aggregation method addressing lazy client bottlenecks in decentralized federated learning scenarios, significantly reducing training iterations while retaining model stability across non-IID data distributions.
-          </p>
-          <div class="flex flex-wrap gap-2 text-xs">
-            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Python</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">PyTorch</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Federated Learning</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">AAAI</span>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="p-6 rounded-xl border border-slate-800 bg-slate-900/30 hover:border-slate-700 transition duration-200 space-y-4">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <h3 class="text-lg font-semibold text-white">Deep Learning for Left Ventricular Hypertrophy Classification</h3>
-            <div class="flex gap-3 text-xs">
-              <a href="#" class="text-slate-400 hover:text-white hover:underline">Source</a>
-            </div>
-          </div>
-          <p class="text-slate-400 text-sm leading-relaxed">
-            Engineered computer vision pipelines for automated classification and segmentation of cardiac imaging datasets. Implemented data augmentation routines, hyperparameter tuning, and interpretability heatmaps (Grad-CAM).
-          </p>
-          <div class="flex flex-wrap gap-2 text-xs">
-            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Computer Vision</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">PyTorch</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Medical Imaging</span>
-          </div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="p-6 rounded-xl border border-slate-800 bg-slate-900/30 hover:border-slate-700 transition duration-200 space-y-4">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <h3 class="text-lg font-semibold text-white">AI Video Assistant for Active Learning (CHI)</h3>
-            <div class="flex gap-3 text-xs">
-              <a href="#" class="text-sky-400 hover:underline">Publication</a>
-              <span class="text-slate-600">•</span>
-              <a href="#" class="text-slate-400 hover:text-white hover:underline">Demo</a>
-            </div>
-          </div>
-          <p class="text-slate-400 text-sm leading-relaxed">
-            Designed and evaluated an intelligent multimodal system leveraging Large Language Models to transform passive lecture video consumption into interactive query-and-response learning sessions.
-          </p>
-          <div class="flex flex-wrap gap-2 text-xs">
-            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">LLMs</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">HCI</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Full-Stack Prototype</span>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="pt-10 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-      <p>&copy; 2026 Anna Bodonhelyi. Built with HTML & Tailwind CSS.</p>
-      <div class="flex gap-5">
-        <a href="https://github.com/annabodonhelyi" class="hover:text-slate-400 transition">GitHub</a>
-        <a href="https://www.linkedin.com/in/annabodonhelyi" class="hover:text-slate-400 transition">LinkedIn</a>
-        <a href="mailto:your.email@example.com" class="hover:text-slate-400 transition">Email</a>
-      </div>
-    </footer>
-
-  </div>
 </body>
 </html>
