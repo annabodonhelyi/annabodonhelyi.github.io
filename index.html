@@ -69,6 +69,60 @@
 
     .nav-links a:hover { color: var(--gold); }
 
+    /* ── TABLE OF CONTENTS ── */
+    .toc {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-50%);
+      width: 150px;
+      padding: 1.1rem 1rem;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 6px;
+      box-shadow: 0 2px 12px rgba(26, 35, 66, 0.08);
+      z-index: 50;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .toc-list li {
+      border-left: 2px solid var(--fog);
+      padding-left: 0.85rem;
+      transition: border-color 0.2s;
+    }
+
+    .toc-list a {
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--slate);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .toc-list a:hover { color: var(--navy); }
+
+    .toc-list li.active {
+      border-left-color: var(--gold);
+    }
+
+    .toc-list li.active a {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    @media (min-width: 1360px) {
+      .toc { display: block; }
+    }
+
     /* ── HERO ── */
     .hero {
       background: var(--navy);
@@ -93,7 +147,7 @@
       position: absolute;
       inset: 12px -12px -12px 12px;
       border: 2px solid var(--gold);
-      border-radius: 2px;
+      border-radius: 50%;
       z-index: 0;
     }
 
@@ -101,9 +155,10 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      aspect-ratio: 3/4;
+      aspect-ratio: 1/1;
       object-fit: cover;
-      border-radius: 2px;
+      object-position: center 8%;
+      border-radius: 50%;
       display: block;
       background: var(--slate); /* placeholder tint if image missing */
     }
@@ -250,6 +305,38 @@
       font-style: italic;
     }
 
+    .pub-video {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      aspect-ratio: 16/9;
+      margin-top: 0.85rem;
+      border-radius: 2px;
+      overflow: hidden;
+      background: var(--fog);
+    }
+
+    .pub-video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .pub-video--wide {
+      max-width: 640px;
+      aspect-ratio: 1152/254;
+      background: var(--white);
+    }
+
+    .pub-video--wide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
     /* ── TIMELINE ── */
     .timeline { list-style: none; margin-top: 0.5rem; }
 
@@ -281,6 +368,147 @@
       color: var(--slate);
     }
 
+    .tl-desc {
+      font-size: 0.85rem;
+      color: var(--ink);
+      margin-top: 0.4rem;
+    }
+
+    .tl-media {
+      margin-top: 0.75rem;
+      max-width: 420px;
+    }
+
+    .tl-media img {
+      width: 100%;
+      border-radius: 2px;
+      display: block;
+    }
+
+    .tl-media-caption {
+      font-size: 0.72rem;
+      color: var(--slate);
+      margin-top: 0.35rem;
+    }
+
+    .tl-media-caption a {
+      color: var(--slate);
+      border-bottom: 1px solid var(--gold);
+      text-decoration: none;
+    }
+
+    /* ── HORIZONTAL MODULES (patent / datasets) ── */
+    .h-module {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: var(--white);
+      border: 1px solid var(--fog);
+      border-radius: 3px;
+    }
+
+    section:nth-child(even) .h-module { background: var(--paper); }
+
+    .h-module + .h-module { margin-top: 1.25rem; }
+
+    .h-module-image {
+      position: relative;
+      flex: 0 0 200px;
+      aspect-ratio: 4/3;
+      background: var(--fog);
+      border-radius: 2px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .h-module-image img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .h-module-image span {
+      font-size: 0.72rem;
+      color: var(--slate);
+      text-align: center;
+      padding: 0.5rem;
+    }
+
+    .h-module-content { flex: 1; min-width: 0; }
+
+    .h-module-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .h-module-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      color: var(--navy);
+      line-height: 1.4;
+      margin-bottom: 0.4rem;
+    }
+
+    .h-module-meta {
+      font-size: 0.78rem;
+      color: var(--slate);
+      margin-bottom: 0.5rem;
+    }
+
+    .h-module-desc {
+      font-size: 0.88rem;
+      color: var(--ink);
+      margin-bottom: 0;
+    }
+
+    .h-module-link {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold);
+    }
+    .h-module-link:hover { color: var(--gold); }
+
+    .dataset-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .dataset-grid .h-module {
+      flex-direction: column;
+      align-items: stretch;
+      margin-top: 0;
+      height: 100%;
+    }
+
+    .dataset-grid .h-module-image {
+      flex-basis: auto;
+      width: 100%;
+      aspect-ratio: 16/9;
+    }
+
+    @media (max-width: 680px) {
+      .h-module { flex-direction: column; align-items: stretch; }
+      .h-module-image { flex-basis: auto; aspect-ratio: 16/9; }
+      .dataset-grid { grid-template-columns: 1fr; }
+    }
+
     /* ── CONTACT ── */
     .contact-grid {
       display: grid;
@@ -302,6 +530,13 @@
       text-align: center;
       padding: 2rem;
       font-size: 0.78rem;
+    }
+
+    .footer-note {
+      margin-top: 0.5rem;
+      font-size: 0.7rem;
+      color: var(--slate);
+      opacity: 0.7;
     }
 
     /* ── RESPONSIVE ── */
@@ -327,7 +562,24 @@
     <ul class="nav-links">
       <li><a href="#research">Research</a></li>
       <li><a href="#publications">Publications</a></li>
+      <li><a href="#patent">Patent</a></li>
+      <li><a href="#datasets">Datasets</a></li>
       <li><a href="#cv">CV</a></li>
+      <li><a href="#outreach">Outreach</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- TABLE OF CONTENTS -->
+  <nav class="toc" aria-label="Table of contents">
+    <ul class="toc-list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#patent">Patent</a></li>
+      <li><a href="#datasets">Datasets</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#outreach">Outreach</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -339,17 +591,18 @@
         <img class="hero-photo" src="profile.jpg" alt="Portrait of Anna Bodonhelyi" />
       </div>
       <div class="hero-text">
-        <p class="hero-affiliation">TU Munich · HCTL Lab</p>
+        <p class="hero-affiliation">Machine Learning &amp; Applied AI Researcher</p>
         <h1 class="hero-name">Anna<br>Bodonhelyi</h1>
         <p class="hero-tagline">
-          PhD researcher exploring how humans and AI systems learn together —
-          with a focus on intelligent tutoring, adaptive feedback, and the design
-          of technology that supports meaningful educational experiences.
+          Building intelligent, embodied systems that actively engage and augment
+          human capabilities — from multimodal LLM architectures to federated
+          learning frameworks and advanced computer vision pipelines.
         </p>
         <div class="hero-links">
-          <a href="mailto:anna.bodonhelyi@tum.de" class="btn btn-gold">Email me</a>
-          <a href="https://scholar.google.com" target="_blank" rel="noopener" class="btn btn-outline">Google Scholar</a>
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+          <a href="mailto:bodonhelyianna@gmail.com" class="btn btn-gold">Email me</a>
+          <a href="cv.pdf" target="_blank" rel="noopener" class="btn btn-outline">Download CV</a>
+          <a href="https://scholar.google.com/citations?user=GtQQL84AAAAJ&hl=en" target="_blank" rel="noopener" class="btn btn-outline">Google Scholar</a>
+          <a href="https://www.linkedin.com/in/anna-bodonhelyi/" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
         </div>
       </div>
     </div>
@@ -361,16 +614,32 @@
       <p class="section-label">About</p>
       <h2>Background</h2>
       <p>
-        I am a PhD researcher at the <strong>Human-Centered Technologies for Learning (HCTL)</strong>
-        group at the Technical University of Munich, supervised by Prof. Enkelejda Kasneci.
-        My work sits at the intersection of educational technology, human-computer interaction,
-        and machine learning — asking how intelligent systems can be designed to genuinely
-        support learners rather than simply measure them.
+        Machine Learning and Applied AI Researcher, combining a deep technical foundation
+        in machine learning with dual Master's degrees in Mechatronics (TU Budapest) and
+        Robotics, Cognition, Intelligence (TU Munich). I specialize in developing multimodal
+        LLM architectures, federated learning frameworks, and advanced computer vision pipelines.
       </p>
       <p>
-        Before joining TUM, I studied cognitive science and worked on projects exploring
-        eye-tracking as a window into learning and attention. I am passionate about
-        participatory design approaches that center the learner's experience.
+        During my PhD, supported by a <a href="https://www.bidt.digital/person/anna-bodonhelyi/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);">bidt scholarship</a> and carried out as a member of the
+        <a href="https://mcml.ai/research/groups/kasneci-enkelejda/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);">Munich Center for Machine Learning (MCML)</a>, I worked across many different areas
+        united by a single focus: improving online learning, whether through a trained ML
+        algorithm running quietly in the background or through software that learners
+        interact with directly. This work spans deep learning and multimodal data, including
+        an online lecture tutor built around an embedded LLM tutor that gives students
+        accurate, immediate feedback as they learn.
+      </p>
+      <p>
+        Beyond algorithmic research, I am deeply passionate about human-AI interaction,
+        and building production-ready systems that bridge the gap between
+        complex theoretical models and tangible, real-world applications. My ultimate
+        drive is to build intelligent, embodied systems that actively engage and augment
+        human capabilities — designing useful applications that move the world forward,
+        ease burdens, and support the people doing essential work.
+      </p>
+      <p>
+        I am also a team member of the
+        <a href="https://www.edtech.tum.de/about-us/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);">TUM EdTech Center</a>,
+        where I help organize events and programs that bring AI in education to a wider audience.
       </p>
     </div>
   </section>
@@ -382,18 +651,18 @@
       <h2>Interests</h2>
       <p>
         My research investigates adaptive learning technologies, cognitive load, and the
-        role of physiological signals — particularly eye movements — in understanding
+        role of physiological signals in understanding
         and supporting learning processes. I am interested in building systems that
-        respond to learners in real time, and in understanding the ethical implications
+        respond to users in real time, and in understanding the ethical implications
         of doing so.
       </p>
       <div class="interests-grid">
         <span class="tag">Intelligent Tutoring Systems</span>
-        <span class="tag">Eye-Tracking &amp; Gaze</span>
+        <span class="tag">Computer Vision</span>
         <span class="tag">Adaptive Learning</span>
         <span class="tag">Cognitive Load</span>
         <span class="tag">Human-AI Interaction</span>
-        <span class="tag">Educational Technology</span>
+        <span class="tag">LLM &amp VLM</span>
         <span class="tag">Participatory Design</span>
         <span class="tag">Multimodal Sensing</span>
       </div>
@@ -404,39 +673,159 @@
   <section id="publications">
     <div class="section-inner">
       <p class="section-label">Publications</p>
-      <h2>Selected Work</h2>
+      <h2>Publications</h2>
       <ul class="pub-list">
         <li class="pub-item">
           <p class="pub-title">
-            <a href="#">Gaze-Informed Adaptive Feedback in Digital Learning Environments</a>
+            <a href="https://ojs.aaai.org/index.php/AAAI/article/view/29481" target="_blank" rel="noopener">TurboSVM-FL: Boosting Federated Learning through SVM Aggregation for Lazy Clients</a>
           </p>
           <p class="pub-meta">
-            Anna Bodonhelyi, E. Kasneci et al. ·
-            <span class="pub-venue">Proceedings of the ACM CHI Conference on Human Factors in Computing Systems</span> · 2024
+            M. Wang, A. Bodonhelyi, E. Bozkir, E. Kasneci ·
+            <span class="pub-venue">Proceedings of the AAAI Conference on Artificial Intelligence, 38(14), 15546–</span> · 2024
           </p>
         </li>
         <li class="pub-item">
           <p class="pub-title">
-            <a href="#">Cognitive Load Estimation from Eye Movements During Reading Tasks</a>
+            <a href="https://dl.acm.org/doi/full/10.1145/3706598.3713513" target="_blank" rel="noopener">From Passive Watching to Active Learning: Empowering Proactive Participation in Digital Classrooms with AI Video Assistant</a>
           </p>
           <p class="pub-meta">
-            Anna Bodonhelyi et al. ·
-            <span class="pub-venue">AIED — International Conference on Artificial Intelligence in Education</span> · 2023
+            A. Bodonhelyi, E. Thaqi, S. Özdel, E. Bozkir, E. Kasneci ·
+            <span class="pub-venue">Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems</span> · 2025
+          </p>
+          <div class="pub-video">
+            <iframe
+              src="https://www.youtube.com/embed/Ysivl4SF6NM"
+              title="From Passive Watching to Active Learning — video"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </li>
+        <li class="pub-item">
+          <p class="pub-title">
+            <a href="https://arxiv.org/abs/2604.09569" target="_blank" rel="noopener">Automatic Mind Wandering Detection in Educational Settings: A Systematic Review and Multimodal Benchmarking</a>
+          </p>
+          <p class="pub-meta">
+            A. Bodonhelyi, A. Curinier, B. Bühler, G. Anders, L. Rausch, M. Huff, et al. ·
+            <span class="pub-venue">Under submission to Computers &amp; Education · arXiv:2604.09569</span> · 2026
           </p>
         </li>
         <li class="pub-item">
           <p class="pub-title">
-            <a href="#">Towards Learner-Centered AI: A Framework for Participatory Design of Adaptive Systems</a>
+            <a href="https://arxiv.org/abs/2602.09904" target="_blank" rel="noopener">Safeguarding Privacy: Privacy-Preserving Detection of Mind Wandering and Disengagement Using Federated Learning in Online Education</a>
           </p>
           <p class="pub-meta">
-            Anna Bodonhelyi, R. Schneider, E. Kasneci ·
-            <span class="pub-venue">LAK — International Conference on Learning Analytics &amp; Knowledge</span> · 2023
+            A. Bodonhelyi, M. Wang, E. Bozkir, B. Bühler, E. Kasneci ·
+            <span class="pub-venue">Under submission to International Journal of Artificial Intelligence in Education · arXiv:2602.09904</span> · 2026
+          </p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-title">What Are We Measuring? Trivial Baselines and the Observability Ceiling in Video-Based Mind Wandering Detection</p>
+          <p class="pub-meta">
+            Anna Bodonhelyi, Mete Alp Bahadır, Mengdi Wang, Enkelejda Kasneci ·
+            <span class="pub-venue">Under submission to AAAI 2027</span>
+          </p>
+          <div class="pub-video pub-video--wide">
+            <img src="megif.gif" alt="Identity, motion, and generated video comparison" />
+          </div>
+        </li>
+        <li class="pub-item">
+          <p class="pub-title">
+            <a href="https://link.springer.com/chapter/10.1007/978-3-032-29760-0_53" target="_blank" rel="noopener">Should AI Ask First? Investigating the Effects of Proactive vs Reactive AI Mentoring in Self-directed Learning</a>
+          </p>
+          <p class="pub-meta">
+            K. Otmani, A. Bodonhelyi, B. Bühler, E. Kasneci ·
+            <span class="pub-venue">International Conference on Artificial Intelligence in Education, 521–535</span> · 2026
+          </p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-title">
+            <a href="https://arxiv.org/abs/2402.02136" target="_blank" rel="noopener">User Intent Recognition and Satisfaction with Large Language Models: A User Study with ChatGPT</a>
+          </p>
+          <p class="pub-meta">
+            A. Bodonhelyi, E. Bozkir, S. Yang, E. Kasneci, G. Kasneci ·
+            <span class="pub-venue">Under submission to Computers in Human Behavior: Artificial Humans · arXiv:2402.02136</span> · 2024
           </p>
         </li>
       </ul>
       <p style="margin-top:1.25rem; font-size:0.82rem; color:var(--slate);">
-        Full list on <a href="https://scholar.google.com" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);" target="_blank" rel="noopener">Google Scholar</a>.
+        Full list on <a href="https://scholar.google.com/citations?user=GtQQL84AAAAJ&hl=en" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);" target="_blank" rel="noopener">Google Scholar</a>.
       </p>
+    </div>
+  </section>
+
+  <!-- PATENT -->
+  <section id="patent">
+    <div class="section-inner">
+      <p class="section-label">Intellectual Property</p>
+      <h2>Patent</h2>
+      <div class="h-module">
+        <div class="h-module-image">
+          <span>Image coming soon</span>
+          <img src="patent.jpg" alt="Patent illustration" onerror="this.style.display='none'" />
+        </div>
+        <div class="h-module-content">
+          <p class="h-module-label">Patent</p>
+          <p class="h-module-title">Systems and Methods for Classifying Blood Cells</p>
+          <p class="h-module-meta">WO2024108104 · US Patent Office · Published May 23, 2024</p>
+          <p class="h-module-desc">
+            Inventors: Slobodan Ilic, Anna Bodonhelyi, Thomas Engel, Gaby Marquardt,
+            Agnieszka Maria Tomczak.<br>
+            Application No. WO2023US80249.
+          </p>
+          <a href="https://patents.justia.com/patent/20260204086" class="h-module-link" target="_blank" rel="noopener">View patent</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DATASETS -->
+  <section id="datasets">
+    <div class="section-inner">
+      <p class="section-label">Open Data</p>
+      <h2>Published Datasets</h2>
+
+      <div class="dataset-grid">
+        <div class="h-module">
+          <div class="h-module-image">
+            <span>Image coming soon</span>
+            <img src="dataset1.jpg" alt="Dataset 1 illustration" onerror="this.style.display='none'" />
+          </div>
+          <div class="h-module-content">
+            <p class="h-module-label">Dataset</p>
+            <p class="h-module-title">User Intent Recognition and Satisfaction with Large Language Models: A User Study with ChatGPT</p>
+            <p class="h-module-meta">Under submission to Computers in Human Behavior: Artificial Humans · arXiv preprint, 2024</p>
+            <p class="h-module-desc">
+              Anna Bodonhelyi, Efe Bozkir, Shuo Yang, Enkelejda Kasneci, Gjergji Kasneci.
+              A user study examining how GPT-3.5 Turbo and GPT-4 Turbo recognize user
+              intent and how well users are satisfied with the resulting responses.
+            </p>
+            <a href="https://arxiv.org/abs/2402.02136" class="h-module-link" target="_blank" rel="noopener">View paper</a>
+          </div>
+        </div>
+
+        <div class="h-module">
+          <div class="h-module-image">
+            <span>Image coming soon</span>
+            <img src="dataset2.jpg" alt="Dataset 2 illustration" onerror="this.style.display='none'" />
+          </div>
+          <div class="h-module-content">
+            <p class="h-module-label">Dataset</p>
+            <p class="h-module-title">Automatic Mind Wandering Detection in Educational Settings: A Systematic Review and Multimodal Benchmarking</p>
+            <p class="h-module-meta">Under submission to Computers &amp; Education · arXiv preprint, 2026</p>
+            <p class="h-module-desc">
+              Anna Bodonhelyi, Augustin Curinier, Babette Bühler, Gerrit Anders, Lisa Rausch,
+              Markus Huff, Ulrich Trautwein, Ralph Ewerth, Peter Gerjets, Enkelejda Kasneci.
+              A systematic review and multimodal benchmark of mind wandering detection
+              (EEG, facial video, eye tracking, physiological signals) across 13 models
+              and 14 datasets in educational settings.
+            </p>
+            <a href="https://arxiv.org/abs/2604.09569" class="h-module-link" target="_blank" rel="noopener">View paper</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -444,34 +833,155 @@
   <section id="cv">
     <div class="section-inner">
       <p class="section-label">Curriculum Vitae</p>
-      <h2>Experience</h2>
+      <h2>Work Experience</h2>
       <ul class="timeline">
         <li class="tl-item">
-          <span class="tl-year">2021 –</span>
+          <span class="tl-year">Feb 2023 – present</span>
           <div>
-            <p class="tl-role">PhD Researcher</p>
-            <p class="tl-place">Human-Centered Technologies for Learning Lab, TU Munich</p>
+            <p class="tl-role">Scientific Associate (Ph.D.)</p>
+            <p class="tl-place">Technical University of Munich · TUM School of Computation, Information and Technology</p>
+            <p class="tl-desc">AI-Driven Educational Technologies: From Detection to Engagement</p>
           </div>
         </li>
         <li class="tl-item">
-          <span class="tl-year">2019 – 2021</span>
+          <span class="tl-year">Apr 2022 – Jan 2023</span>
           <div>
-            <p class="tl-role">M.Sc. Cognitive Science</p>
-            <p class="tl-place">University of Tübingen</p>
+            <p class="tl-role">Working Student</p>
+            <p class="tl-place">Siemens Healthcare GmbH</p>
+            <p class="tl-desc">Classification and digital staining of red blood cells with deep learning</p>
           </div>
         </li>
         <li class="tl-item">
-          <span class="tl-year">2016 – 2019</span>
+          <span class="tl-year">Sep 2021 – Mar 2022</span>
           <div>
-            <p class="tl-role">B.Sc. Psychology</p>
-            <p class="tl-place">Eötvös Loránd University, Budapest</p>
+            <p class="tl-role">Research Assistant</p>
+            <p class="tl-place">Helmholtz AI</p>
+            <p class="tl-desc">Front-end and back-end development for AI algorithms</p>
           </div>
         </li>
         <li class="tl-item">
-          <span class="tl-year">2020</span>
+          <span class="tl-year">Jun 2019 – Jan 2020</span>
           <div>
-            <p class="tl-role">Research Intern</p>
-            <p class="tl-place">Eye-Tracking Research Group, Max Planck Institute for Informatics</p>
+            <p class="tl-role">Trainee</p>
+            <p class="tl-place">Knorr-Bremse</p>
+            <p class="tl-desc">Development of EAC (Electronic Air Control) systems in MATLAB &amp; Simulink, Visual Studio, SQLite</p>
+          </div>
+        </li>
+      </ul>
+
+      <h2 style="margin-top:3rem;">Education</h2>
+      <ul class="timeline">
+        <li class="tl-item">
+          <span class="tl-year">Oct 2020 – Feb 2023</span>
+          <div>
+            <p class="tl-role">Master's Degree · Robotics, Cognition, Intelligence</p>
+            <p class="tl-place">Technical University of Munich</p>
+            <p class="tl-desc">Thesis: Classification and Digital Staining of Red Blood Cells with Deep Learning</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-year">Feb 2020 – Jan 2022</span>
+          <div>
+            <p class="tl-role">Master's Degree · Mechatronics Engineering</p>
+            <p class="tl-place">Budapest University of Technology and Economics</p>
+            <p class="tl-desc">Thesis: Deep learning-based classification of left ventricular hypertrophy</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-year">Oct 2018 – Feb 2019</span>
+          <div>
+            <p class="tl-role">Bachelor's Degree · Mechatronics Engineering</p>
+            <p class="tl-place">Karlsruhe Institute of Technology</p>
+            <p class="tl-desc">Erasmus semester with Campus Mundi scholarship</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-year">Sep 2016 – Jan 2020</span>
+          <div>
+            <p class="tl-role">Bachelor's Degree · Mechatronics Engineering</p>
+            <p class="tl-place">Budapest University of Technology and Economics</p>
+            <p class="tl-desc">Thesis: Examination of the Deformation of Vehicle Quarter Glass Injection Moulding Elastomers Caused by Compressed Air</p>
+          </div>
+        </li>
+      </ul>
+
+      <h2 style="margin-top:3rem;">Languages</h2>
+      <div class="interests-grid">
+        <span class="tag">English — C1</span>
+        <span class="tag">German — C1</span>
+        <span class="tag">Hungarian — Native</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTREACH -->
+  <section id="outreach">
+    <div class="section-inner">
+      <p class="section-label">Outreach</p>
+      <h2>Outreach Activities</h2>
+      <ul class="timeline">
+        <li class="tl-item">
+          <span class="tl-year">Oct 2023</span>
+          <div>
+            <p class="tl-role">Organization of the <a href="https://sites.google.com/view/widsmunich/past-events/WiDS-2023/team-2023?pli=1&authuser=0" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold);text-decoration:none;">WiDS Munich event</a></p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-year">Nov 2023</span>
+          <div>
+            <p class="tl-role">TUM EdTech Webinar: <a href="https://www.edtech.tum.de/generative-ai-in-academia/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold);text-decoration:none;">"Generative AI in Academia"</a></p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-year">Feb 2024</span>
+          <div>
+            <p class="tl-role">AAAI poster presentation in Vancouver</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-year">Jul 2024</span>
+          <div>
+            <p class="tl-role">Seminar Berufliche Bildung: "Videogeneration with AI"</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-year">Aug 2024</span>
+          <div>
+            <p class="tl-role">Workshop in Elmau: <a href="https://www.schloss-elmau.de/kids/edutainment/kreativ-mit-ki/?tx_s8events_default%5Bcontroller%5D=Veranstaltung&tx_s8events_default%5BeventID%5D=&tx_s8events_default%5Bm%5D=10&tx_s8events_default%5By%5D=2026&cHash=1d3a4bbe6f648fcb39bc8879f8a166cc" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold);text-decoration:none;">"Kreativ mit KI"</a></p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-year">Oct 2024</span>
+          <div>
+            <p class="tl-role">Workshop at Grundschule am Winthirplatz</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-year">Oct 2024</span>
+          <div>
+            <p class="tl-role"><a href="https://www.rolandbergerstiftung.org/was-wir-tun/die-grundschulstipendien/ippen-grundschulstipendien/muenchner-kindl-stipendium/ki-seminar-an-der-tum" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold);text-decoration:none;">3-day workshop in collaboration with the Roland Berger Stiftung</a></p>
+            <div class="tl-media">
+              <img src="csm_Roland-Berger-Stifung-KI-Seminar-084_3fcf9ed693.webp" alt="Anna Bodonhelyi leading the AI seminar with students at the Roland Berger Stiftung workshop" />
+              <p class="tl-media-caption">Source: <a href="https://www.rolandbergerstiftung.org/was-wir-tun/die-grundschulstipendien/ippen-grundschulstipendien/muenchner-kindl-stipendium/ki-seminar-an-der-tum" target="_blank" rel="noopener">Roland Berger Stiftung</a></p>
+            </div>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-year">Feb 2025</span>
+          <div>
+            <p class="tl-role">Keynote speech: "From Passive Watching to Active Learning: Strengthening Proactive Participation with LLM-Based Assistants" at the Automated Assessment of Teaching Effectiveness Using Multimodal Data workshop</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-year">Apr 2025</span>
+          <div>
+            <p class="tl-role">CHI paper presentation: "From Passive Watching to Active Learning: Empowering Proactive Participation in Digital Classrooms with AI Video Assistant"</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-year">Jun 2026</span>
+          <div>
+            <p class="tl-role">Organization of the <a href="https://www.edtech.tum.de/invite-to-international-symposium-on-future-learning/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold);text-decoration:none;">International Symposium on the Future of Learning</a>: "Future Learning: Global Perspectives, European Pathways"</p>
           </div>
         </li>
       </ul>
@@ -491,22 +1001,14 @@
         <div class="contact-item">
           <span class="contact-label">Email</span>
           <span class="contact-value">
-            <a href="mailto:anna.bodonhelyi@tum.de">anna.bodonhelyi@tum.de</a>
+            <a href="mailto:bodonhelyianna@gmail.com">bodonhelyianna@gmail.com</a>
           </span>
-        </div>
-        <div class="contact-item">
-          <span class="contact-label">Office</span>
-          <span class="contact-value">TU Munich, School of Social Sciences and Technology</span>
-        </div>
-        <div class="contact-item">
-          <span class="contact-label">Address</span>
-          <span class="contact-value">Georg-Brauchle-Ring 60/62, 80992 Munich, Germany</span>
         </div>
         <div class="contact-item">
           <span class="contact-label">Profiles</span>
           <span class="contact-value">
-            <a href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a> ·
-            <a href="https://orcid.org" target="_blank" rel="noopener">ORCID</a>
+            <a href="https://scholar.google.com/citations?user=GtQQL84AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a> ·
+            <a href="https://orcid.org/0009-0001-8941-3893" target="_blank" rel="noopener">ORCID</a>
           </span>
         </div>
       </div>
@@ -515,7 +1017,30 @@
 
   <footer>
     <p>© 2026 Anna Bodonhelyi · Technical University of Munich</p>
+    <p class="footer-note">All images on this site are generated with Gemini.</p>
   </footer>
+
+  <script>
+    (function () {
+      var sections = document.querySelectorAll('section[id]');
+      var tocLinks = document.querySelectorAll('.toc-list a');
+      var linkBySection = {};
+      tocLinks.forEach(function (a) {
+        linkBySection[a.getAttribute('href').slice(1)] = a;
+      });
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          var link = linkBySection[entry.target.id];
+          if (!link || !entry.isIntersecting) return;
+          tocLinks.forEach(function (a) { a.parentElement.classList.remove('active'); });
+          link.parentElement.classList.add('active');
+        });
+      }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+      sections.forEach(function (s) { observer.observe(s); });
+    })();
+  </script>
 
 </body>
 </html>
