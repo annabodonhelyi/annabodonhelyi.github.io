@@ -6,127 +6,109 @@
   <title>Anna Bodonhelyi — PhD Researcher</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:   #1a2342;
-      --ink:    #222b40;
-      --slate:  #6b7a99;
-      --fog:    #dce2ee;
-      --paper:  #f8f7f4;
-      --gold:   #c9a84c;
-      --white:  #ffffff;
+      --bg:        #050811;
+      --bg-2:      #0a1122;
+      --surface:   #0d1830;
+      --surface-2: #112247;
+      --line:      rgba(56, 189, 248, 0.16);
+      --line-strong: rgba(56, 189, 248, 0.45);
+      --accent:    #38bdf8;   /* cyan-blue */
+      --accent-2:  #3b82f6;   /* electric blue */
+      --accent-3:  #818cf8;   /* indigo */
+      --text:      #b8c7e0;
+      --heading:   #eef6ff;
+      --muted:     #6f82a8;
+      --glow:      0 0 24px rgba(56, 189, 248, 0.35);
     }
 
     html { font-size: 16px; scroll-behavior: smooth; }
 
     body {
-      background: var(--paper);
-      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 15% -10%, rgba(59, 130, 246, 0.22), transparent 55%),
+        radial-gradient(ellipse at 90% 30%, rgba(129, 140, 248, 0.14), transparent 50%),
+        var(--bg);
+      background-attachment: fixed;
+      color: var(--text);
       font-family: 'Inter', sans-serif;
       font-weight: 400;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      position: relative;
     }
+
+    /* faint scanline grid across the whole page */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+      -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body > * { position: relative; z-index: 1; }
+
+    ::selection { background: var(--accent-2); color: var(--heading); }
 
     /* ── NAV ── */
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--navy);
+      background: rgba(5, 8, 17, 0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
       padding: 0 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 56px;
+      height: 60px;
     }
 
     .nav-logo {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
       font-size: 1rem;
-      color: var(--white);
-      letter-spacing: 0.01em;
+      color: var(--heading);
+      letter-spacing: 0.04em;
       text-decoration: none;
     }
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.75rem;
       list-style: none;
     }
 
     .nav-links a {
-      color: var(--fog);
+      color: var(--muted);
       text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      transition: color 0.2s;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s, text-shadow 0.2s;
     }
 
-    .nav-links a:hover { color: var(--gold); }
-
-    /* ── TABLE OF CONTENTS ── */
-    .toc {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 16px;
-      transform: translateY(-50%);
-      width: 150px;
-      padding: 1.1rem 1rem;
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border-radius: 6px;
-      box-shadow: 0 2px 12px rgba(26, 35, 66, 0.08);
-      z-index: 50;
-    }
-
-    .toc-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.55rem;
-    }
-
-    .toc-list li {
-      border-left: 2px solid var(--fog);
-      padding-left: 0.85rem;
-      transition: border-color 0.2s;
-    }
-
-    .toc-list a {
-      font-size: 0.76rem;
-      font-weight: 500;
-      color: var(--slate);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      transition: color 0.2s;
-    }
-
-    .toc-list a:hover { color: var(--navy); }
-
-    .toc-list li.active {
-      border-left-color: var(--gold);
-    }
-
-    .toc-list li.active a {
-      color: var(--navy);
-      font-weight: 600;
-    }
-
-    @media (min-width: 1360px) {
-      .toc { display: block; }
-    }
+    .nav-links a:hover { color: var(--accent); text-shadow: 0 0 10px rgba(56, 189, 248, 0.6); }
 
     /* ── HERO ── */
     .hero {
-      background: var(--navy);
-      padding: 5rem 2rem 4rem;
+      padding: 5.5rem 2rem 4.5rem;
+      border-bottom: 1px solid var(--line);
     }
 
     .hero-inner {
@@ -140,51 +122,48 @@
 
     .hero-photo-wrap {
       position: relative;
-    }
-
-    .hero-photo-wrap::after {
-      content: '';
-      position: absolute;
-      inset: 12px -12px -12px 12px;
-      border: 2px solid var(--gold);
-      border-radius: 50%;
-      z-index: 0;
-    }
-
-    .hero-photo {
-      position: relative;
-      z-index: 1;
       width: 100%;
-      aspect-ratio: 1/1;
-      object-fit: cover;
-      object-position: center 8%;
-      border-radius: 50%;
-      display: block;
-      background: var(--slate); /* placeholder tint if image missing */
+      padding: 3px;
+      border-radius: 20px;
+      background: linear-gradient(160deg, #2563eb 0%, #1d4ed8 100%);
+      border: 1px solid #3b82f6;
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.25), 0 10px 40px rgba(37, 99, 235, 0.35);
     }
-
+    .hero-photo {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: center 15%;
+      border-radius: 16px;
+      background: var(--surface-2);
+    }
     .hero-text { padding-top: 0.5rem; }
 
     .hero-affiliation {
+      font-family: 'JetBrains Mono', monospace;
       font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      color: var(--gold);
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: var(--accent);
       text-transform: uppercase;
       margin-bottom: 1rem;
     }
 
     .hero-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
-      color: var(--white);
-      line-height: 1.1;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.4rem, 4.6vw, 3.6rem);
+      color: var(--heading);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
       margin-bottom: 1.5rem;
+      text-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
     }
 
     .hero-tagline {
       font-size: 1rem;
-      color: var(--fog);
+      color: var(--text);
       max-width: 52ch;
       margin-bottom: 2rem;
       line-height: 1.75;
@@ -198,33 +177,43 @@
 
     .btn {
       display: inline-block;
-      padding: 0.55rem 1.3rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
+      padding: 0.6rem 1.35rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       text-decoration: none;
-      border-radius: 2px;
-      transition: background 0.2s, color 0.2s;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s, border-color 0.2s;
     }
 
     .btn-gold {
-      background: var(--gold);
-      color: var(--navy);
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      color: #04101f;
+      font-weight: 700;
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.35);
     }
-    .btn-gold:hover { background: #e0be6a; }
+    .btn-gold:hover { box-shadow: 0 0 28px rgba(56, 189, 248, 0.6); color: #04101f; }
 
     .btn-outline {
-      border: 1.5px solid var(--fog);
-      color: var(--fog);
+      border: 1px solid var(--line-strong);
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.05);
     }
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      background: rgba(56, 189, 248, 0.12);
+      box-shadow: var(--glow);
+      color: var(--heading);
+    }
 
     /* ── SECTIONS ── */
     section {
-      padding: 4rem 2rem;
+      padding: 4.5rem 2rem;
     }
 
-    section:nth-child(even) { background: var(--white); }
+    section:nth-child(even) { background: rgba(10, 17, 34, 0.55); }
 
     .section-inner {
       max-width: 720px;
@@ -232,26 +221,32 @@
     }
 
     .section-label {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      color: var(--slate);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--accent);
       text-transform: uppercase;
       margin-bottom: 0.6rem;
     }
+    .section-label::before { content: '// '; color: var(--muted); }
 
     h2 {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
       font-size: clamp(1.5rem, 2.5vw, 2rem);
-      color: var(--navy);
+      color: var(--heading);
       margin-bottom: 1.5rem;
       padding-bottom: 0.75rem;
-      border-bottom: 2px solid var(--gold);
+      border-bottom: 1px solid transparent;
+      border-image: linear-gradient(90deg, var(--accent), transparent) 1;
       display: inline-block;
     }
 
-    p { color: var(--ink); margin-bottom: 1rem; max-width: 68ch; }
+    p { color: var(--text); margin-bottom: 1rem; max-width: 68ch; }
     p:last-child { margin-bottom: 0; }
+
+    a { color: var(--accent); }
 
     /* ── RESEARCH INTERESTS ── */
     .interests-grid {
@@ -262,12 +257,14 @@
     }
 
     .tag {
-      font-size: 0.78rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
       font-weight: 500;
-      color: var(--navy);
-      background: var(--fog);
-      padding: 0.3rem 0.85rem;
-      border-radius: 1px;
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid var(--line);
+      padding: 0.3rem 0.8rem;
+      border-radius: 3px;
     }
 
     /* ── PUBLICATIONS ── */
@@ -275,14 +272,15 @@
 
     .pub-item {
       padding: 1.25rem 0;
-      border-bottom: 1px solid var(--fog);
+      border-bottom: 1px solid var(--line);
     }
-    .pub-item:first-child { border-top: 1px solid var(--fog); }
+    .pub-item:first-child { border-top: 1px solid var(--line); }
 
     .pub-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1rem;
-      color: var(--navy);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 1.02rem;
+      color: var(--heading);
       line-height: 1.4;
       margin-bottom: 0.3rem;
     }
@@ -291,39 +289,36 @@
       color: inherit;
       text-decoration: none;
       border-bottom: 1px solid transparent;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, color 0.2s;
     }
-    .pub-title a:hover { border-color: var(--gold); }
+    .pub-title a:hover { color: var(--accent); border-color: var(--accent); }
 
     .pub-meta {
       font-size: 0.78rem;
-      color: var(--slate);
+      color: var(--muted);
       line-height: 1.5;
     }
 
-    .pub-venue {
-      font-style: italic;
-    }
+    .pub-venue { font-style: italic; }
 
     .pub-note {
       font-size: 0.72rem;
-      color: var(--slate);
+      color: var(--muted);
       font-style: italic;
       margin-top: 0.3rem;
     }
 
-    .pub-code {
-      margin-top: 0.5rem;
-    }
+    .pub-code { margin-top: 0.5rem; }
 
     .pub-code a {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--navy);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--accent);
       text-decoration: none;
-      border-bottom: 1px solid var(--gold);
+      border-bottom: 1px solid var(--line-strong);
     }
-    .pub-code a:hover { color: var(--gold); }
+    .pub-code a:hover { color: var(--heading); text-shadow: 0 0 8px rgba(56,189,248,.6); }
 
     .pub-video {
       position: relative;
@@ -331,9 +326,10 @@
       max-width: 480px;
       aspect-ratio: 16/9;
       margin-top: 0.85rem;
-      border-radius: 2px;
+      border-radius: 6px;
       overflow: hidden;
-      background: var(--fog);
+      background: var(--surface);
+      border: 1px solid var(--line);
     }
 
     .pub-video iframe {
@@ -347,7 +343,7 @@
     .pub-video--wide {
       max-width: 640px;
       aspect-ratio: 1152/254;
-      background: var(--white);
+      background: var(--surface);
     }
 
     .pub-video--wide img {
@@ -365,32 +361,33 @@
       grid-template-columns: 100px 1fr;
       gap: 1.25rem;
       padding: 1rem 0;
-      border-bottom: 1px solid var(--fog);
+      border-bottom: 1px solid var(--line);
     }
-    .tl-item:first-child { border-top: 1px solid var(--fog); }
+    .tl-item:first-child { border-top: 1px solid var(--line); }
 
     .tl-year {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--gold);
-      padding-top: 0.15rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--accent);
+      padding-top: 0.2rem;
     }
 
     .tl-role {
       font-weight: 500;
-      font-size: 0.93rem;
-      color: var(--navy);
+      font-size: 0.95rem;
+      color: var(--heading);
       margin-bottom: 0.2rem;
     }
 
     .tl-place {
       font-size: 0.8rem;
-      color: var(--slate);
+      color: var(--muted);
     }
 
     .tl-desc {
       font-size: 0.85rem;
-      color: var(--ink);
+      color: var(--text);
       margin-top: 0.4rem;
     }
 
@@ -401,19 +398,20 @@
 
     .tl-media img {
       width: 100%;
-      border-radius: 2px;
+      border-radius: 6px;
       display: block;
+      border: 1px solid var(--line);
     }
 
     .tl-media-caption {
       font-size: 0.72rem;
-      color: var(--slate);
+      color: var(--muted);
       margin-top: 0.35rem;
     }
 
     .tl-media-caption a {
-      color: var(--slate);
-      border-bottom: 1px solid var(--gold);
+      color: var(--muted);
+      border-bottom: 1px solid var(--line-strong);
       text-decoration: none;
     }
 
@@ -424,12 +422,18 @@
       align-items: center;
       margin-top: 1.5rem;
       padding: 1.5rem;
-      background: var(--white);
-      border: 1px solid var(--fog);
-      border-radius: 3px;
+      background: linear-gradient(160deg, rgba(17, 34, 71, 0.6), rgba(13, 24, 48, 0.6));
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
     }
 
-    section:nth-child(even) .h-module { background: var(--paper); }
+    .h-module:hover {
+      border-color: var(--line-strong);
+      box-shadow: var(--glow);
+    }
+
+    section:nth-child(even) .h-module { background: linear-gradient(160deg, rgba(17, 34, 71, 0.7), rgba(10, 17, 34, 0.7)); }
 
     .h-module + .h-module { margin-top: 1.25rem; }
 
@@ -437,8 +441,8 @@
       position: relative;
       flex: 0 0 200px;
       aspect-ratio: 4/3;
-      background: var(--fog);
-      border-radius: 2px;
+      background: var(--surface-2);
+      border-radius: 4px;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -456,7 +460,7 @@
 
     .h-module-image span {
       font-size: 0.72rem;
-      color: var(--slate);
+      color: var(--muted);
       text-align: center;
       padding: 0.5rem;
     }
@@ -464,44 +468,47 @@
     .h-module-content { flex: 1; min-width: 0; }
 
     .h-module-label {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: var(--gold);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--accent);
       text-transform: uppercase;
       margin-bottom: 0.35rem;
     }
 
     .h-module-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.05rem;
-      color: var(--navy);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1.08rem;
+      color: var(--heading);
       line-height: 1.4;
       margin-bottom: 0.4rem;
     }
 
     .h-module-meta {
       font-size: 0.78rem;
-      color: var(--slate);
+      color: var(--muted);
       margin-bottom: 0.5rem;
     }
 
     .h-module-desc {
       font-size: 0.88rem;
-      color: var(--ink);
+      color: var(--text);
       margin-bottom: 0;
     }
 
     .h-module-link {
       display: inline-block;
       margin-top: 0.6rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--navy);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--accent);
       text-decoration: none;
-      border-bottom: 1px solid var(--gold);
+      border-bottom: 1px solid var(--line-strong);
     }
-    .h-module-link:hover { color: var(--gold); }
+    .h-module-link:hover { color: var(--heading); text-shadow: 0 0 8px rgba(56,189,248,.6); }
 
     .dataset-grid {
       display: grid;
@@ -538,15 +545,28 @@
     }
 
     .contact-item { display: flex; flex-direction: column; gap: 0.25rem; }
-    .contact-label { font-size: 0.72rem; font-weight: 600; color: var(--slate); letter-spacing: 0.06em; text-transform: uppercase; }
-    .contact-value { font-size: 0.9rem; color: var(--navy); }
-    .contact-value a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); transition: color 0.2s; }
-    .contact-value a:hover { color: var(--gold); }
+    .contact-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .contact-value { font-size: 0.92rem; color: var(--heading); }
+    .contact-value a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--line-strong);
+      transition: color 0.2s, text-shadow 0.2s;
+    }
+    .contact-value a:hover { color: var(--heading); text-shadow: 0 0 8px rgba(56,189,248,.6); }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--navy);
-      color: var(--slate);
+      background: var(--bg-2);
+      border-top: 1px solid var(--line);
+      color: var(--muted);
       text-align: center;
       padding: 2rem;
       font-size: 0.78rem;
@@ -555,8 +575,42 @@
     .footer-note {
       margin-top: 0.5rem;
       font-size: 0.7rem;
-      color: var(--slate);
+      color: var(--muted);
       opacity: 0.7;
+    }
+
+    footer p { color: var(--muted); }
+
+    /* ── RESEARCH TILES ── */
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .tile {
+      position: relative;
+      padding: 1.1rem 1.25rem 1.1rem 1.4rem;
+      background: #13171f;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .tile:hover {
+      background: #181d27;
+      border-color: rgba(56, 189, 248, 0.3);
+      border-left-color: var(--accent);
+    }
+    .tile-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.97rem;
+      color: #e6edf7;
+      line-height: 1.45;
+      margin: 0;
     }
 
     /* ── RESPONSIVE ── */
@@ -565,7 +619,7 @@
         grid-template-columns: 1fr;
         gap: 2.5rem;
       }
-      .hero-photo-wrap { max-width: 200px; }
+      .hero-photo-wrap { max-width: 200px; margin: 0 auto; }
       .nav-links { display: none; }
       .tl-item { grid-template-columns: 80px 1fr; }
     }
@@ -584,22 +638,6 @@
       <li><a href="#publications">Publications</a></li>
       <li><a href="#patent">Patent</a></li>
       <li><a href="#datasets">Datasets</a></li>
-      <li><a href="#cv">CV</a></li>
-      <li><a href="#teaching">Teaching</a></li>
-      <li><a href="#outreach">Outreach</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- TABLE OF CONTENTS -->
-  <nav class="toc" aria-label="Table of contents">
-    <ul class="toc-list">
-      <li><a href="#about">About</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#patent">Patent</a></li>
-      <li><a href="#datasets">Datasets</a></li>
-      <li><a href="#cv">CV</a></li>
       <li><a href="#teaching">Teaching</a></li>
       <li><a href="#outreach">Outreach</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -641,8 +679,8 @@
         LLM architectures, federated learning frameworks, and advanced computer vision pipelines.
       </p>
       <p>
-        During my PhD, supported by a <a href="https://www.bidt.digital/person/anna-bodonhelyi/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);">bidt scholarship</a> and carried out as a member of the
-        <a href="https://mcml.ai/research/groups/kasneci-enkelejda/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);">Munich Center for Machine Learning (MCML)</a>, I worked across many different areas
+        During my PhD, supported by a <a href="https://www.bidt.digital/person/anna-bodonhelyi/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);">bidt scholarship</a> and carried out as a member of the
+        <a href="https://mcml.ai/research/groups/kasneci-enkelejda/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);">Munich Center for Machine Learning (MCML)</a>, I worked across many different areas
         united by a single focus: improving online learning, whether through a trained ML
         algorithm running quietly in the background or through software that learners
         interact with directly. This work spans deep learning and multimodal data, including
@@ -659,12 +697,48 @@
       </p>
       <p>
         I am also a team member of the
-        <a href="https://www.edtech.tum.de/about-us/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);">TUM EdTech Center</a>,
+        <a href="https://www.edtech.tum.de/about-us/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);">TUM EdTech Center</a>,
         where I help organize events and programs that bring AI in education to a wider audience.
       </p>
     </div>
   </section>
 
+  <!-- RESEARCH INTERESTS TILES -->
+  <section id="research-areas">
+    <div class="section-inner">
+      <p class="section-label">Focus</p>
+      <h2>Research Interests</h2>
+      <div class="tile-grid">
+        <div class="tile">
+          <p class="tile-title">Multimodal LLM Architectures</p>
+        </div>
+        <div class="tile">
+          <p class="tile-title">Federated Learning</p>
+        </div>
+        <div class="tile">
+          <p class="tile-title">Mind Wandering &amp; Disengagement</p>
+        </div>
+        <div class="tile">
+          <p class="tile-title">Human-AI Interaction</p>
+        </div>
+        <div class="tile">
+          <p class="tile-title">Intelligent Tutoring Systems</p>
+        </div>
+        <div class="tile">
+          <p class="tile-title">Computer Vision</p>
+        </div>
+        <div class="tile">
+          <p class="tile-title">Generative AI</p>
+        </div>
+        <div class="tile">
+          <p class="tile-title">Vision-Language &amp; Large Language Models</p>
+        </div>
+        <div class="tile">
+          <p class="tile-title">Deep Learning</p>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- RESEARCH -->
   <section id="research">
     <div class="section-inner">
@@ -733,9 +807,9 @@
           </p>
           <p class="pub-meta">
             A. Bodonhelyi, A. Curinier, B. Bühler, G. Anders, L. Rausch, M. Huff, et al. ·
-            <span class="pub-venue">Under submission to Computers &amp; Education · arXiv:2604.09569</span> · 2026
+            <span class="pub-venue">Computers &amp; Education · doi:10.1016/j.compedu.2026.105781</span> · 2026
           </p>
-          <p class="pub-code"><a href="https://gitlab.lrz.de/hctl/mw-benchmarking" target="_blank" rel="noopener">Code</a></p>
+          <p class="pub-code"><a href="https://gitlab.lrz.de/hctl/mw-benchmarking" target="_blank" rel="noopener">Code</a> · <a href="https://doi.org/10.1016/j.compedu.2026.105781" target="_blank" rel="noopener">DOI</a> · <a href="https://zenodo.org/records/14097753" target="_blank" rel="noopener">Dataset</a></p>
         </li>
         <li class="pub-item">
           <p class="pub-title">
@@ -777,8 +851,8 @@
           </p>
         </li>
       </ul>
-      <p style="margin-top:1.25rem; font-size:0.82rem; color:var(--slate);">
-        Full list on <a href="https://scholar.google.com/citations?user=GtQQL84AAAAJ&hl=en" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);" target="_blank" rel="noopener">Google Scholar</a>.
+      <p style="margin-top:1.25rem; font-size:0.82rem; color:var(--muted);">
+        Full list on <a href="https://scholar.google.com/citations?user=GtQQL84AAAAJ&hl=en" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);" target="_blank" rel="noopener">Google Scholar</a>.
       </p>
     </div>
   </section>
@@ -832,7 +906,7 @@
               for consistency and data-quality checks. Includes only the anonymized conversational
               logs collected under informed consent.
             </p>
-            <a href="https://zenodo.org/records/22649273" class="h-module-link" target="_blank" rel="noopener">View dataset</a>
+            <a href="https://zenodo.org/records/22649273" class="h-module-link" target="_blank" rel="noopener">View dataset</a> · <a href="https://www.sciencedirect.com/science/article/pii/S2949882126001532" class="h-module-link" target="_blank" rel="noopener">View paper</a>
           </div>
         </div>
 
@@ -844,107 +918,16 @@
           <div class="h-module-content">
             <p class="h-module-label">Dataset</p>
             <p class="h-module-title">Automatic Mind Wandering Detection in Educational Settings: A Systematic Review and Multimodal Benchmarking</p>
-            <p class="h-module-meta">Under submission to Computers &amp; Education · arXiv preprint, 2026</p>
+            <p class="h-module-meta">Computers &amp; Education</p>
             <p class="h-module-desc">
               An eye-tracking dataset for mind wandering detection (N = 56;
               M<sub>age</sub> = 26.23, SD = 5.50), recorded at 1000 Hz with an EyeLink 1000
               Plus as participants watched instructional videos on derivatives, self-reported
               mind wandering via key press, and completed a retention test one week later.
             </p>
-            <a href="https://arxiv.org/abs/2604.09569" class="h-module-link" target="_blank" rel="noopener">View paper</a>
+            <a href="https://zenodo.org/records/14097753" class="h-module-link" target="_blank" rel="noopener">View dataset</a> · <a href="https://www.sciencedirect.com/science/article/pii/S0360131526002216" class="h-module-link" target="_blank" rel="noopener">View paper</a>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CV -->
-  <section id="cv">
-    <div class="section-inner">
-      <p class="section-label">Curriculum Vitae</p>
-      <h2>Work Experience</h2>
-      <ul class="timeline">
-        <li class="tl-item">
-          <span class="tl-year">Feb 2023 – present</span>
-          <div>
-            <p class="tl-role">Scientific Associate (Ph.D.)</p>
-            <p class="tl-place">Technical University of Munich · TUM School of Computation, Information and Technology</p>
-            <p class="tl-desc">Multimodal LLM architectures · Federated learning · Mind wandering &amp; disengagement detection · Human-AI interaction · Intelligent tutoring systems · Computer vision</p>
-          </div>
-        </li>
-        <li class="tl-item">
-          <span class="tl-year">Apr 2022 – Jan 2023</span>
-          <div>
-            <p class="tl-role">Working Student</p>
-            <p class="tl-place">Siemens Healthcare GmbH</p>
-            <p class="tl-desc">Classification and digital staining of red blood cells with deep learning</p>
-          </div>
-        </li>
-        <li class="tl-item">
-          <span class="tl-year">Sep 2021 – Mar 2022</span>
-          <div>
-            <p class="tl-role">Research Assistant</p>
-            <p class="tl-place">Helmholtz AI</p>
-            <p class="tl-desc">Front-end and back-end development for AI algorithms</p>
-          </div>
-        </li>
-        <li class="tl-item">
-          <span class="tl-year">Jun 2019 – Jan 2020</span>
-          <div>
-            <p class="tl-role">Trainee</p>
-            <p class="tl-place">Knorr-Bremse</p>
-            <p class="tl-desc">Development of EAC (Electronic Air Control) systems in MATLAB &amp; Simulink, Visual Studio, SQLite</p>
-          </div>
-        </li>
-      </ul>
-
-      <h2 style="margin-top:3rem;">Education</h2>
-      <ul class="timeline">
-        <li class="tl-item">
-          <span class="tl-year">Feb 2023 – present</span>
-          <div>
-            <p class="tl-role">Ph.D. · Computer Science</p>
-            <p class="tl-place">Technical University of Munich</p>
-            <p class="tl-desc">
-              Dissertation: AI-Driven Educational Technologies: From Detection to Engagement<br>
-              Supervisor: Prof. Dr. Enkelejda Kasneci
-            </p>
-          </div>
-        </li>
-        <li class="tl-item">
-          <span class="tl-year">Oct 2020 – Feb 2023</span>
-          <div>
-            <p class="tl-role">Master's Degree · Robotics, Cognition, Intelligence</p>
-            <p class="tl-place">Technical University of Munich</p>
-            <p class="tl-desc">Thesis: Classification and Digital Staining of Red Blood Cells with Deep Learning</p>
-          </div>
-        </li>
-        <li class="tl-item">
-          <span class="tl-year">Feb 2020 – Jan 2022</span>
-          <div>
-            <p class="tl-role">Master's Degree · Mechatronics Engineering</p>
-            <p class="tl-place">Budapest University of Technology and Economics</p>
-            <p class="tl-desc">Thesis: Deep learning-based classification of left ventricular hypertrophy</p>
-          </div>
-        </li>
-        <li class="tl-item">
-          <span class="tl-year">Sep 2016 – Jan 2020</span>
-          <div>
-            <p class="tl-role">Bachelor's Degree · Mechatronics Engineering</p>
-            <p class="tl-place">Budapest University of Technology and Economics</p>
-            <p class="tl-desc">
-              Thesis: Examination of the Deformation of Vehicle Quarter Glass Injection Moulding Elastomers Caused by Compressed Air<br>
-              Erasmus semester at Karlsruhe Institute of Technology (Oct 2018 – Feb 2019) with Campus Mundi scholarship
-            </p>
-          </div>
-        </li>
-      </ul>
-
-      <h2 style="margin-top:3rem;">Languages</h2>
-      <div class="interests-grid">
-        <span class="tag">English — C1</span>
-        <span class="tag">German — C1</span>
-        <span class="tag">Hungarian — Native</span>
       </div>
     </div>
   </section>
@@ -1028,7 +1011,7 @@
         <li class="tl-item">
           <span class="tl-year">Jun 2026</span>
           <div>
-            <p class="tl-role">Organization of the <a href="https://www.edtech.tum.de/invite-to-international-symposium-on-future-learning/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold);text-decoration:none;">International Symposium on the Future of Learning</a>: "Future Learning: Global Perspectives, European Pathways"</p>
+            <p class="tl-role">Organization of the <a href="https://www.edtech.tum.de/invite-to-international-symposium-on-future-learning/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--accent);text-decoration:none;">International Symposium on the Future of Learning</a>: "Future Learning: Global Perspectives, European Pathways"</p>
           </div>
         </li>
         <li class="tl-item">
@@ -1046,7 +1029,7 @@
         <li class="tl-item">
           <span class="tl-year">Oct 2024</span>
           <div>
-            <p class="tl-role"><a href="https://www.rolandbergerstiftung.org/was-wir-tun/die-grundschulstipendien/ippen-grundschulstipendien/muenchner-kindl-stipendium/ki-seminar-an-der-tum" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold);text-decoration:none;">3-day workshop in collaboration with the Roland Berger Stiftung</a></p>
+            <p class="tl-role"><a href="https://www.rolandbergerstiftung.org/was-wir-tun/die-grundschulstipendien/ippen-grundschulstipendien/muenchner-kindl-stipendium/ki-seminar-an-der-tum" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--accent);text-decoration:none;">3-day workshop in collaboration with the Roland Berger Stiftung</a></p>
             <div class="tl-media">
               <img src="csm_Roland-Berger-Stifung-KI-Seminar-084_3fcf9ed693.webp" alt="Anna Bodonhelyi leading the AI seminar with students at the Roland Berger Stiftung workshop" />
               <p class="tl-media-caption">Source: <a href="https://www.rolandbergerstiftung.org/was-wir-tun/die-grundschulstipendien/ippen-grundschulstipendien/muenchner-kindl-stipendium/ki-seminar-an-der-tum" target="_blank" rel="noopener">Roland Berger Stiftung</a></p>
@@ -1062,7 +1045,7 @@
         <li class="tl-item">
           <span class="tl-year">Aug 2024</span>
           <div>
-            <p class="tl-role">Workshop in Elmau: <a href="https://www.schloss-elmau.de/kids/edutainment/kreativ-mit-ki/?tx_s8events_default%5Bcontroller%5D=Veranstaltung&tx_s8events_default%5BeventID%5D=&tx_s8events_default%5Bm%5D=10&tx_s8events_default%5By%5D=2026&cHash=1d3a4bbe6f648fcb39bc8879f8a166cc" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold);text-decoration:none;">"Kreativ mit KI"</a></p>
+            <p class="tl-role">Workshop in Elmau: <a href="https://www.schloss-elmau.de/kids/edutainment/kreativ-mit-ki/?tx_s8events_default%5Bcontroller%5D=Veranstaltung&tx_s8events_default%5BeventID%5D=&tx_s8events_default%5Bm%5D=10&tx_s8events_default%5By%5D=2026&cHash=1d3a4bbe6f648fcb39bc8879f8a166cc" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--accent);text-decoration:none;">"Kreativ mit KI"</a></p>
           </div>
         </li>
         <li class="tl-item">
@@ -1074,13 +1057,13 @@
         <li class="tl-item">
           <span class="tl-year">Nov 2023</span>
           <div>
-            <p class="tl-role">TUM EdTech Webinar: <a href="https://www.edtech.tum.de/generative-ai-in-academia/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold);text-decoration:none;">"Generative AI in Academia"</a></p>
+            <p class="tl-role">TUM EdTech Webinar: <a href="https://www.edtech.tum.de/generative-ai-in-academia/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--accent);text-decoration:none;">"Generative AI in Academia"</a></p>
           </div>
         </li>
         <li class="tl-item">
           <span class="tl-year">Oct 2023</span>
           <div>
-            <p class="tl-role">Organization of the <a href="https://sites.google.com/view/widsmunich/past-events/WiDS-2023/team-2023?pli=1&authuser=0" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold);text-decoration:none;">WiDS Munich event</a></p>
+            <p class="tl-role">Organization of the <a href="https://sites.google.com/view/widsmunich/past-events/WiDS-2023/team-2023?pli=1&authuser=0" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--accent);text-decoration:none;">WiDS Munich event</a></p>
           </div>
         </li>
       </ul>
@@ -1118,28 +1101,6 @@
     <p>© 2026 Anna Bodonhelyi · Technical University of Munich</p>
     <p class="footer-note">All images on this site are generated with Gemini.</p>
   </footer>
-
-  <script>
-    (function () {
-      var sections = document.querySelectorAll('section[id]');
-      var tocLinks = document.querySelectorAll('.toc-list a');
-      var linkBySection = {};
-      tocLinks.forEach(function (a) {
-        linkBySection[a.getAttribute('href').slice(1)] = a;
-      });
-
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          var link = linkBySection[entry.target.id];
-          if (!link || !entry.isIntersecting) return;
-          tocLinks.forEach(function (a) { a.parentElement.classList.remove('active'); });
-          link.parentElement.classList.add('active');
-        });
-      }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
-
-      sections.forEach(function (s) { observer.observe(s); });
-    })();
-  </script>
 
 </body>
 </html>
